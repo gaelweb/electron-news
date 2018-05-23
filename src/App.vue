@@ -1,13 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <v-app id="inspire" dark>
+      <!-- Menu -->
+      <Navigation></Navigation>
+      <router-view/>
+    </v-app>
   </div>
 </template>
 
 <script>
+import Navigation from '@/components/Navigation'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navigation
+  },
+  data () {
+    return {
+      // drawer: true,
+      //   items: [
+      //     { title: 'A la une', icon: 'question_answer', link: '/news'}
+      //   ],
+      //   mini: true,
+      //   right: null
+    }
+  }
 }
 </script>
 
@@ -17,7 +35,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
