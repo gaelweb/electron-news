@@ -50,6 +50,8 @@
                             for (let x = 0; x < nbrP; x++) {
                                 const entriesElement = entries[x]
                                 // console.log(entriesElement)
+
+                                //Vérification du chemin de l'image du fichier rss
                                 if (entriesElement.enclosures.length === 0) {
                                     entriesImage = entriesElement.image.url
                                 } else {
@@ -72,9 +74,5 @@
 </script>
 
 <style scoped>
-.content-news {
-    position: absolute;
-    margin-left: 10%;
-    width: 90%;
-}
+
 </style>

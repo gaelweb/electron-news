@@ -17,7 +17,9 @@ import MainActu from '@/components/MainActu'
             return {
                 urlFeed: [
                     'https://www.lemonde.fr/culture/rss_full.xml',
-                    'http://rss.allocine.fr/ac/bandesannonces/anepasmanquer?format=xml'
+                    'http://rss.allocine.fr/ac/bandesannonces/anepasmanquer?format=xml',
+                    'https://pix-geeks.com/cinema/film/feed/',
+                    'https://pix-geeks.com/cinema/serie-tv/feed/'
                 ]
             }
         }

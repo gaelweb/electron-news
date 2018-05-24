@@ -1,13 +1,13 @@
 <template>
     <v-navigation-drawer class="navigation-electron" :mini-variant.sync="mini" v-model="drawer" stateless hide-overlay>
-        <v-toolbar flat class="transparent">
+        <v-toolbar flat class="">
           <v-list class="pa-0">
             <v-list-tile avatar>
               <v-list-tile-avatar>
-                <!-- <img src="https://randomuser.me/api/portraits/men/85.jpg" > -->
+                <img src="https://randomuser.me/api/portraits/men/85.jpg" >
               </v-list-tile-avatar>
               <v-list-tile-content>
-                <v-list-tile-title>Nom de l'application</v-list-tile-title>
+                <v-list-tile-title>Electron</v-list-tile-title>
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-btn icon @click.native.stop="mini = !mini">
@@ -44,7 +44,8 @@
                 items: [
                     { title: 'A la une', icon: 'question_answer', link: '/news'},
                     { title: 'Jeux-vidéos', icon: 'videogame_asset', link: '/video-games'},
-                    { title: 'Films et Séries', icon: 'movie', link:'/film-serie'}
+                    { title: 'Films et Séries', icon: 'movie', link: '/film-serie'},
+                    { title: 'High-Tech & Web', icon: 'android', link: '/tech-web'}
                 ],
                 mini: true,
                 right: null
@@ -55,7 +56,6 @@
 
 <style scoped>
 .navigation-electron {
-  /* margin-left: 10% !important; */
-  /* width: 10% !important; */
+  /* position: fixed; */
 }
 </style>

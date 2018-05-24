@@ -31,4 +31,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+.application--wrap{
+  flex-direction: row !important;
+}
 </style>
