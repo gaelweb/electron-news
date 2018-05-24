@@ -1,13 +1,13 @@
 <template>
     <v-navigation-drawer class="navigation-electron" :mini-variant.sync="mini" v-model="drawer" stateless hide-overlay>
-        <v-toolbar flat class="">
+        <v-toolbar flat>
           <v-list class="pa-0">
             <v-list-tile avatar>
               <v-list-tile-avatar>
                 <img src="https://randomuser.me/api/portraits/men/85.jpg" >
               </v-list-tile-avatar>
               <v-list-tile-content>
-                <v-list-tile-title>Electron</v-list-tile-title>
+                <v-list-tile-title>Nom app</v-list-tile-title>
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-btn icon @click.native.stop="mini = !mini">
@@ -17,7 +17,7 @@
             </v-list-tile>
           </v-list>
         </v-toolbar>
-        <v-list class="pt-0" dense>
+        <v-list class="pt-0">
           <v-divider></v-divider>
           <v-list-tile v-for="item in items" :key="item.title" @click.prevent>
             <v-list-tile-action>
@@ -55,7 +55,8 @@
 </script>
 
 <style scoped>
-.navigation-electron {
-  /* position: fixed; */
+a {
+  color: white !important;
+  text-decoration: none !important;
 }
 </style>
