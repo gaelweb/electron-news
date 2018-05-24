@@ -18,12 +18,7 @@ export default {
   },
   data () {
     return {
-      // drawer: true,
-      //   items: [
-      //     { title: 'A la une', icon: 'question_answer', link: '/news'}
-      //   ],
-      //   mini: true,
-      //   right: null
+      
     }
   }
 }

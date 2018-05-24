@@ -1,14 +1,12 @@
 <template>
-    <v-content class="content-news">
-      <v-container fluid fill-height>
-        <v-layout justify-center>
-            <v-flex xs12 sm6 md3 v-for="(item, index) in getTabEntries" :key="index">
+      <v-container class="content-news" grid-list-sm text-xs-center>
+        <v-layout row wrap>
+            <v-flex d-flex xs12 sm6 md4 v-for="(item, index) in getTabEntries" :key="index">
                 <v-card light>
                     <v-card-media :src="item.image" height="200px"></v-card-media>
                     <v-card-title primary-title>
                         <div>
                             <h3 class="headline mb-0">{{ item.title }}</h3>
-                            <div>{{ item.description }}</div>
                         </div>
                     </v-card-title>
                     <v-card-actions>
@@ -18,7 +16,6 @@
             </v-flex>
         </v-layout>
       </v-container>
-    </v-content>
 </template>
 
 <script>
@@ -27,13 +24,17 @@
         props: ['dataUrlFeedCategory'],        
         data () {
             return {
-                getTabEntries: []
+                getTabEntries: [],
+                numberPost: 1
             }
         },
         created () {
             var tabUrlCreated = this.dataUrlFeedCategory
             var entries = null
             var tabEntries = this.getTabEntries
+            var nbrP = this.numberPost
+            var entriesImage = null
+            
             // Function permettant de charger les flux rss pour chaque site
             function loadFeedNami (tabUrlData) {
                 for (let i = 0; i < tabUrlData.length; i++) {
@@ -42,15 +43,24 @@
                         if (result.error) {
                             console.log(result.error)
                         } else {
-                            // la variable entries récupère seulement le premier article
-                            // le plus récent pour chaque site
-                            entries = result.feed.entries[0]
-                            tabEntries.push({
-                                'title': entries.title,
-                                'description': entries.description,
-                                'link': entries.link,
-                                'image': entries.enclosures[0].url
-                            })
+                            // la variable entries récupère les articles
+                            // les plus récents pour chaque site
+                            entries = result.feed.entries
+                            
+                            for (let x = 0; x < nbrP; x++) {
+                                const entriesElement = entries[x]
+                                // console.log(entriesElement)
+                                if (entriesElement.enclosures.length === 0) {
+                                    entriesImage = entriesElement.image.url
+                                } else {
+                                    entriesImage = entriesElement.enclosures[0].url
+                                }
+                                tabEntries.push({
+                                    'title': entriesElement.title,
+                                    'link': entriesElement.link,
+                                    'image': entriesImage
+                                })
+                            }
                         }
                     })
                 }
@@ -62,5 +72,9 @@
 </script>
 
 <style scoped>
-
+.content-news {
+    position: absolute;
+    margin-left: 10%;
+    width: 90%;
+}
 </style>

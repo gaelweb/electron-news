@@ -9,24 +9,22 @@
 import MainActu from '@/components/MainActu'
 
     export default {
-        name: 'News',
+        name: 'Movie',
         components: {
             MainActu
         },
         data () {
             return {
                 urlFeed: [
-                    'http://www.lepoint.fr/rss.xml',
-                    'http://www.leparisien.fr/une/rss.xml#xtor=RSS-1481423633',
-                    'http://www.lemonde.fr/rss/une.xml',
-                    'https://www.bfmtv.com/rss/societe/'
+                    'https://www.lemonde.fr/culture/rss_full.xml',
+                    'http://rss.allocine.fr/ac/bandesannonces/anepasmanquer?format=xml'
                 ]
             }
         }
     }
 </script>
 
-<style scoped>
+<style>
 
 </style>
 

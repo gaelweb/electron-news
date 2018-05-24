@@ -43,7 +43,8 @@
                 drawer: true,
                 items: [
                     { title: 'A la une', icon: 'question_answer', link: '/news'},
-                    { title: 'Jeux-vidéos', icon: 'videogame_asset', link: '/video-games'}
+                    { title: 'Jeux-vidéos', icon: 'videogame_asset', link: '/video-games'},
+                    { title: 'Films et Séries', icon: 'movie', link:'/film-serie'}
                 ],
                 mini: true,
                 right: null
@@ -53,5 +54,8 @@
 </script>
 
 <style scoped>
-
+.navigation-electron {
+  /* margin-left: 10% !important; */
+  /* width: 10% !important; */
+}
 </style>
