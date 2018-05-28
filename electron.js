@@ -6,7 +6,13 @@ let win
 
 function createWindow () {
     // Initialize the window to our specified dimensions
-    win = new BrowserWindow({width: 1000, height: 600})
+    win = new BrowserWindow(
+      {
+        width: 1000, 
+        height: 600,
+        nodeIntegration: false
+      }
+    )
 
     // Specify entry point to default entry point of vue.js
       win.loadURL('http://localhost:8080');

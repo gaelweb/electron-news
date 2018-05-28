@@ -17,10 +17,10 @@ import MainActu from '@/components/MainActu'
             return {
                 tabUrlVideoGames: [
                     'https://www.gamekult.com/feed.xml',
-                    'http://www.jeuxactu.com/rss/ja.rss',
+                    // 'http://www.jeuxactu.com/rss/ja.rss',
                     'https://www.lemonde.fr/jeux-video/rss_full.xml',
                     // 'http://www.jeuxvideo.com/rss/rss.xml',
-                    // 'http://www.linternaute.com/hightech/rss/'                    
+                    // 'http://www.linternaute.com/hightech/rss/',                    
                     'https://pix-geeks.com/jeux-video/feed/',
                 ]
             }

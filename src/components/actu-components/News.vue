@@ -15,16 +15,19 @@ import MainActu from '@/components/MainActu'
         },
         data () {
             return {
-                urlFeed: [
-                    'http://www.lepoint.fr/rss.xml',
-                    'http://www.leparisien.fr/une/rss.xml#xtor=RSS-1481423633',
-                    'http://www.lemonde.fr/rss/une.xml',
+                urlFeed: [ //Garder uniquement les liens en 'https'
+                    // 'http://www.linternaute.com/actualite/rss/'
+                    // 'http://www.leparisien.fr/une/rss.xml#xtor=RSS-1481423633',                                 
+                    'https://www.lepoint.fr/rss.xml',
+                    'https://www.lemonde.fr/rss/une.xml',
                     'https://www.bfmtv.com/rss/societe/',
                     'https://www.francetvinfo.fr/titres.rss',
                     'https://www.ouest-france.fr/rss-en-continu.xml',
                     'https://www.lexpress.fr/rss/alaune.xml',
                     'https://www.frenchweb.fr/rubrique/actualite/feed',
-                    // 'http://www.linternaute.com/actualite/rss/'
+                    'https://www.20minutes.fr/feeds/rss-actu-france.xml',
+                    'https://www.lesechos.fr/rss/rss_une_titres.xml',
+                    'https://www.letelegramme.fr/rss.xml'
                 ]
             }
         }

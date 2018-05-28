@@ -17,8 +17,8 @@ import MainActu from '@/components/MainActu'
                 urlfeed: [
                     'https://www.20minutes.fr/feeds/rss-high-tech.xml',
                     'https://pix-geeks.com/tech/feed/',
-                    'http://www.leparisien.fr/high-tech/rss.xml#xtor=RSS-1481423633',
-                    // 'https://www.journaldugeek.com/tag/high-tech/feed/'
+                    // 'http://www.leparisien.fr/high-tech/rss.xml#xtor=RSS-1481423633',
+                    'https://www.journaldugeek.com/tag/high-tech/feed/'
                 ]
             }
         }
