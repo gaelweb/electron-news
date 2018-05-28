@@ -38,6 +38,7 @@
             var nbrP = this.numberPost
             var entriesImage = null
             var metaTitle = null
+            var metaImage = null
             // Function permettant de charger les flux rss pour chaque site
             function loadFeedNami (tabUrlData) {
                 for (let i = 0; i < tabUrlData.length; i++) {
@@ -51,10 +52,17 @@
                             // les plus récents pour chaque site
                             entries = result.feed.entries
                             metaTitle = result.feed.meta.title
+                            metaImage = result.feed.meta.image.url
 
                             for (let x = 0; x < nbrP; x++) {
                                 const entriesElement = entries[x]
-                                // console.log(entriesElement)
+                                // console.log(metaTitle, result.feed.entries[0])
+
+                                // if (result.feed.meta.image != null) {
+                                //     console.log(result.feed.meta.image.url)
+                                // } else {
+                                //     console.log('pas d\'image')
+                                // }
 
                                 //Vérification du chemin de l'image du fichier rss
                                 if (entriesElement.enclosures.length === 0) {
