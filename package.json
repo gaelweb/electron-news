@@ -1,5 +1,6 @@
 {
   "name": "electron-news",
+  "product-name": "kactus",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "gael monbrault <gael.pro.dev@gmail.com>",
@@ -16,6 +17,7 @@
   },
   "dependencies": {
     "electron": "^2.0.1",
+    "update-electron-app": "^1.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.18"
@@ -41,6 +43,8 @@
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
     "devtron": "^1.4.0",
+    "electron-packager": "^12.1.0",
+    "electron-store": "^1.3.0",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",

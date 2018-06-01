@@ -1,6 +1,9 @@
 <template>
       <v-container class="content-news" grid-list-sm text-xs-left>
-        <v-layout row wrap>
+            <v-btn color="green" fab @click="scrollBack" v-show="offsetTop > 200" class="scroll-btn">
+                <v-icon>vertical_align_top</v-icon>
+            </v-btn>
+        <v-layout v-scroll="onScroll" row wrap>
             <v-flex d-flex xs12 sm6 md4 v-for="(item, index) in getTabEntries" :key="index">
                 <v-card light>
                     <v-card-media :src="item.image" height="200px"></v-card-media>
@@ -28,7 +31,8 @@
         data () {
             return {
                 getTabEntries: [],
-                numberPost: 1
+                numberPost: 2,
+                offsetTop: 0
             }
         },
         created () {
@@ -83,10 +87,22 @@
             }
             // On appelle la fonction et on récupère les flux rss
             loadFeedNami(tabUrlCreated)
+        },
+        methods: {
+            onScroll (e) {
+                this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+            },
+            scrollBack () {
+                document.documentElement.scrollTop = 0
+            }
         }
     }    
 </script>
 
 <style scoped>
-
+.scroll-btn{
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+}
 </style>

@@ -3,12 +3,12 @@
     <v-layout row wrap>
       <v-flex>
         <div class="hello">
-          <h1>{{ msg }}</h1>
+          <img src="../assets/Kactus_logo.png" alt="">
+          <h1>{{ msg }}</h1>       
         </div>
       </v-flex>
     </v-layout>
   </v-container>
-
 </template>
 
 <script>
@@ -16,7 +16,12 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Electron App'
+      msg: 'Kactus'
+    }
+  },
+  methods: {
+    submit () {
+      console.log(this)
     }
   }
 }
