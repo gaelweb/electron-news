@@ -4,7 +4,9 @@
       <v-flex>
         <div class="hello">
           <img src="../assets/Kactus_logo.png" alt="">
-          <h1>{{ msg }}</h1>       
+          <h1>{{ msg }}</h1>
+          <span>Developed by Gael Monbrault</span><br>
+          <span>@2018</span>    
         </div>
       </v-flex>
     </v-layout>
@@ -16,12 +18,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Kactus'
-    }
-  },
-  methods: {
-    submit () {
-      console.log(this)
+      msg: 'K-actus'
     }
   }
 }
