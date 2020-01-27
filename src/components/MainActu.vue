@@ -1,108 +1,108 @@
 <template>
-      <v-container class="content-news" grid-list-sm text-xs-left>
-            <v-btn color="green" fab @click="scrollBack" v-show="offsetTop > 200" class="scroll-btn">
-                <v-icon>vertical_align_top</v-icon>
-            </v-btn>
-        <v-layout v-scroll="onScroll" row wrap>
-            <v-flex d-flex xs12 sm6 md4 v-for="(item, index) in getTabEntries" :key="index">
-                <v-card light>
-                    <v-card-media :src="item.image" height="200px"></v-card-media>
-                    <v-card-title primary-title>
-                        <div>
-                            <span>{{ item.siteName }}</span><br><br>
-                            <div class="headline">{{ item.title }}</div>
-                        </div>
-                    </v-card-title>
-                    <v-card-actions>
-                        <v-btn target="_blank" :href="item.link" flat color="grey">
-                            Détails ..
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-flex>
-        </v-layout>
-      </v-container>
+  <v-container class="content-news" grid-list-sm text-xs-left>
+    <v-btn color="green" fab @click="scrollBack" v-show="offsetTop > 200" class="scroll-btn">
+      <v-icon>vertical_align_top</v-icon>
+    </v-btn>
+    <v-layout v-scroll="onScroll" row wrap>
+      <v-flex d-flex xs12 sm6 md4 v-for="(item, index) in getTabEntries" :key="index">
+        <v-card light>
+          <v-img :src="item.image" height="200px"></v-img>
+          <v-card-title primary-title>
+            <div>
+              <span>{{ item.siteName }}</span>
+              <br />
+              <br />
+              <div class="headline">{{ item.title }}</div>
+            </div>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn target="_blank" :href="item.link" flat color="grey">Détails ..</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-    export default {
-        name: 'MainActu',
-        props: ['dataUrlFeedCategory'],        
-        data () {
-            return {
-                getTabEntries: [],
-                numberPost: 2,
-                offsetTop: 0
+export default {
+  name: "MainActu",
+  props: ["dataUrlFeedCategory"],
+  data() {
+    return {
+      getTabEntries: [],
+      numberPost: 2,
+      offsetTop: 0
+    };
+  },
+  created() {
+    var tabUrlCreated = this.dataUrlFeedCategory;
+    var entries = null;
+    var tabEntries = this.getTabEntries;
+    var nbrP = this.numberPost;
+    var entriesImage = null;
+    var metaTitle = null;
+    var metaImage = null;
+    // Function permettant de charger les flux rss pour chaque site
+    function loadFeedNami(tabUrlData) {
+      for (let i = 0; i < tabUrlData.length; i++) {
+        const element = tabUrlData[i];
+
+        feednami.load(element, function(result) {
+          if (result.error) {
+            console.log(result.error);
+          } else {
+            // la variable entries récupère les articles
+            // les plus récents pour chaque site
+            entries = result.feed.entries;
+            metaTitle = result.feed.meta.title;
+            metaImage = result.feed.meta.image.url;
+
+            for (let x = 0; x < nbrP; x++) {
+              const entriesElement = entries[x];
+              // console.log(metaTitle, result.feed.entries[0])
+
+              // if (result.feed.meta.image != null) {
+              //     console.log(result.feed.meta.image.url)
+              // } else {
+              //     console.log('pas d\'image')
+              // }
+
+              //Vérification du chemin de l'image du fichier rss
+              if (entriesElement.enclosures.length === 0) {
+                entriesImage = entriesElement.image.url;
+              } else {
+                entriesImage = entriesElement.enclosures[0].url;
+              }
+              tabEntries.push({
+                title: entriesElement.title,
+                link: entriesElement.link,
+                image: entriesImage,
+                siteName: metaTitle
+              });
             }
-        },
-        created () {
-            var tabUrlCreated = this.dataUrlFeedCategory
-            var entries = null
-            var tabEntries = this.getTabEntries
-            var nbrP = this.numberPost
-            var entriesImage = null
-            var metaTitle = null
-            var metaImage = null
-            // Function permettant de charger les flux rss pour chaque site
-            function loadFeedNami (tabUrlData) {
-                for (let i = 0; i < tabUrlData.length; i++) {
-                    const element = tabUrlData[i]
-
-                    feednami.load(element, function (result) {
-                        if (result.error) {
-                            console.log(result.error)
-                        } else {
-                            // la variable entries récupère les articles
-                            // les plus récents pour chaque site
-                            entries = result.feed.entries
-                            metaTitle = result.feed.meta.title
-                            metaImage = result.feed.meta.image.url
-
-                            for (let x = 0; x < nbrP; x++) {
-                                const entriesElement = entries[x]
-                                // console.log(metaTitle, result.feed.entries[0])
-
-                                // if (result.feed.meta.image != null) {
-                                //     console.log(result.feed.meta.image.url)
-                                // } else {
-                                //     console.log('pas d\'image')
-                                // }
-
-                                //Vérification du chemin de l'image du fichier rss
-                                if (entriesElement.enclosures.length === 0) {
-                                    entriesImage = entriesElement.image.url
-                                } else {
-                                    entriesImage = entriesElement.enclosures[0].url
-                                }
-                                tabEntries.push({
-                                    'title': entriesElement.title,
-                                    'link': entriesElement.link,
-                                    'image': entriesImage,
-                                    'siteName': metaTitle
-                                })
-                            }
-                        }
-                    })
-                }
-            }
-            // On appelle la fonction et on récupère les flux rss
-            loadFeedNami(tabUrlCreated)
-        },
-        methods: {
-            onScroll (e) {
-                this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
-            },
-            scrollBack () {
-                document.documentElement.scrollTop = 0
-            }
-        }
-    }    
+          }
+        });
+      }
+    }
+    // On appelle la fonction et on récupère les flux rss
+    loadFeedNami(tabUrlCreated);
+  },
+  methods: {
+    onScroll(e) {
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
+    },
+    scrollBack() {
+      document.documentElement.scrollTop = 0;
+    }
+  }
+};
 </script>
 
 <style scoped>
-.scroll-btn{
-    position: fixed;
-    z-index: 1000;
-    right: 0;
+.scroll-btn {
+  position: fixed;
+  z-index: 1000;
+  right: 0;
 }
 </style>
