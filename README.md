@@ -6,10 +6,10 @@
 
 ## How to launch application
 
-``` bash
+```bash
 
 # In first terminal, serve with hot reload at localhost:8080
-npm run dev
+yarn dev
 
 # Second terminal, launch electron js
 electron .
